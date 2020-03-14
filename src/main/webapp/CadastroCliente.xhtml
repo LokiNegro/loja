@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">  
+ <h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Cadastro</title>
+</h:head>
+    	<h:body>
+    		<h:form>    
+    			<p:messages id="messages" autoUpdate="true" closable="true" />	
+    			<p:panel header="Cadastro" >	  		
+		    	<h:panelGrid columns="1">
+		   		<div>
+		    		<p:outputLabel value="Usuário" for="usuario"/>
+		    		<h:inputText id="usuario" size="20" maxlength="20" value="#{adminClienteBean.cliente.usuario}"/>
+				</div>	
+				<div>
+					<h:outputLabel value="Senha" for="senha"/>
+		    		<h:inputSecret id="senha" size="20" maxlength="20" value="#{adminClienteBean.cliente.senha}"/>
+				</div>	
+				<div>
+					<h:outputLabel value="Nome" for="nome"/>
+		    		<h:inputText id="nome" size="20" maxlength="20" value="#{adminClienteBean.cliente.nome}"/>
+		    	</div>	
+		    	<div>
+		    		<h:outputLabel value="Email" for="email"/>
+		    		<h:inputText id="email" size="20" maxlength="20" value="#{adminClienteBean.cliente.email}"/>
+		    	</div>	
+		    	<div>	
+		    		<p:outputLabel value="Data de Nascimento" for="dataNasci"/>
+					<p:calendar id="dataNasci" value="#{adminClienteBean.cliente.dataNasci}" 
+					converter="calendarConverter" pattern="dd/MM/yyyy"  mask="true"/>
+				</div>	
+				
+				<div>	
+		    		<h:outputLabel value="CPF" for="cpf"/>
+		    		<h:inputText id="cpf" size="20" maxlength="20" value="#{adminClienteBean.cliente.cpf}"/>
+		    	</div>	
+		    	
+		    	<div>			
+		    		<h:outputLabel value="Sexo" for="sexo"/>
+					<h:selectOneMenu id="sexo" value="#{adminClienteBean.cliente.sexo}">
+						<f:selectItem itemLabel="Selecione o Sexo" />
+	    				<f:selectItems value="#{adminClienteBean.sexos}" var="sexo" 
+	    					itemLabel="#{sexo.descricao}" itemValue="#{sexo}"/>
+					</h:selectOneMenu>
+		    	</div>	   
+		    	 		
+		    	<div>	
+		    		<h:outputLabel value="Profissão" for="profissao"/>
+		    		<h:inputText id="profissao" size="20" maxlength="20" value="#{adminClienteBean.cliente.profissao}"/>
+		    	</div>
+		    	
+				<div>			
+		    		<h:outputLabel value="Estado" for="estado"/>
+					<h:selectOneMenu id="estado" value="#{adminClienteBean.cliente.estado}">
+						<f:selectItem itemLabel="Selecione o Estado" />
+	    				<f:selectItems value="#{adminClienteBean.estados}" var="estado" 
+	    					itemLabel="#{estado}" itemValue="#{estado}"/>
+					</h:selectOneMenu>
+		    	</div>	
+		    	
+				<div>		
+					<h:outputLabel value="Cidade" for="cidade"/>
+		    		<h:inputText id="cidade" size="20" maxlength="20" value="#{adminClienteBean.cliente.cidade}"/>
+		    	</div>
+		    	
+		    	<div>		
+		    		<h:outputLabel value="Endereço" for="endereco"/>
+		    		<h:inputText id="endereco" size="20" maxlength="20" value="#{adminClienteBean.cliente.endereco}"/>
+		    	</div>
+		    	
+		    	<div>		
+		    		<h:outputLabel value="Telefone" for="telefone"/>
+		    		<h:inputText id="telefone" size="20" maxlength="20" value="#{adminClienteBean.cliente.telefone}"/>		    	</div>	
+		    		
+		    	</h:panelGrid>
+		    	<p:toolbarGroup>
+					<p:commandButton value="Salvar" id="botaoCadastrar" action="#{adminClienteBean.salvar}"/>
+				</p:toolbarGroup>
+		    	<p:toolbarGroup align="right">
+					<p:button value="Login" id="botaoIrLogin" outcome="/Home.xhtml"/>
+				</p:toolbarGroup>	
+		   </p:panel>
+		   </h:form>
+	   </h:body>
+</html>

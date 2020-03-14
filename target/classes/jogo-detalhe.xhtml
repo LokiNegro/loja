@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	 xmlns:p="http://primefaces.org/ui">
+	
+<f:metadata>
+	<f:viewParam value="#{jogoDetalheBean.id}" name="id"/>
+	<f:viewAction action ="#{jogoDetalheBean.carregaDetalhe()}"/>
+</f:metadata>	
+	<title>#{jogoDetalheBean.jogo.titulo}</title>
+	
+<article id="jogo-compra" itemscope="" itemtype="http://schema.org/Book">
+	<header class="cabecalhoProdutoJogo container">
+	<div class="cabecalhoProdutoJogo-tituloEPlataforma">
+		<h1 itemprop="name" class="cabecalhoProdutoJogo-titulo">
+			<span class="cabecalhoProdutoJogo-titulo-principal" role="presentation">
+				#{jogoDetalheBean.jogo.titulo}
+			</span>
+		</h1>
+		<span class="cabecalhoProdutoJogo-nomePlataforma">
+			Plataformas:
+			<ui:repeat value="#{jogoDetalheBean.jogo.plataformas}" var="plataforma">
+				#{plataforma.nome},
+			</ui:repeat>
+		</span>
+	</div>	
+	<div class="imagemLivroNinja " role="img">
+		<img class="imagemLivroNinja-principal" src="#{request.contextPath}/file/#{jogoDetalheBean.jogo.capaPath}" height="20%" width="20%" />
+	</div>
+	</header>
+<form class="adicionarAoCarrinho">
+	<ul class="adicionarAoCarrinho-listaOfertas">
+		<li class="adicionarAoCarrinho-oferta" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+			<label class="adicionarAoCarrinho-infosDaOferta" for="product-variant-2055441665">
+				<span class="adicionarAoCarrinho-tipoDaOferta" role="presentation" itemprop="category" itemscope="">
+					<span class="adicionarAoCarrinho-tipoDaOferta-nome">
+						Jogo
+					</span>
+				</span>
+				<p class="adicionarAoCarrinho-preco">
+						<small class="adicionarAoCarrinho-preco-promocao">
+							<del class="adicionarAoCarrinho-preco-promocao-valor">R$ 499,90</del> por
+						</small>
+					<span class="adicionarAoCarrinho-preco-valor" itemprop="price">
+						R$ #{jogoDetalheBean.jogo.preco}
+					</span>
+				</p>
+			</label>
+			<a href="#{request.contextPath}/LoginCompra.xhtml?id=#{jogoDetalheBean.id}" class="jogoNaDescricao-link">
+					Comprar
+			</a>	
+		</li>
+	</ul>
+	</form>
+<section class="conteudoDoJogo infoSection" itemprop="description">
+	<h2 class="infoSection-titulo">
+		Conteúdo
+	</h2>
+	<p class="infoSection-texto">
+		#{jogoDetalheBean.jogo.descricao}
+	</p>
+</section>
+
+<section class="infosAdicionaisDoJogo infoSection">
+	<h2 class="infoSection-titulo">
+		Desenvolvedor
+	</h2>
+	<p class="infoSection-texto">
+		#{jogoDetalheBean.jogo.desenvolvedor}
+	</p>
+	 <p:toolbarGroup align="right">
+			<p:button value="Voltar" id="botaoIrPrincipal" outcome="/Principal.xhtml"/>
+	</p:toolbarGroup>	
+</section>
+</article>
+</html>

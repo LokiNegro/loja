@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">  
+	<h:body>
+		<head>
+    		<h:form enctype="multipart/form-data">    
+    			<p:messages id="messages" autoUpdate="true" closable="true" />	
+    			<p:panel header="Cadastro Jogos" >	  		
+		    	<h:panelGrid columns="1">
+		   		<div>
+		    		<p:outputLabel value="Titulo" for="titulo"/>
+		    		<p:inputText id="titulo" size="20" maxlength="20" value="#{adminJogosBean.jogo.titulo}"/>
+				</div>	
+				<div>
+					<p:outputLabel value="Descrição" for="descricao"/>
+		    		<p:inputTextarea id="descricao" rows="4" cols="20" size="20" maxlength="20" value="#{adminJogosBean.jogo.descricao}"/>
+				</div>	
+				<div>
+					<p:outputLabel value="Desenvolvedor" for="desenvolvedor"/>
+		    		<p:inputText id="desenvolvedor" size="20" maxlength="20" value="#{adminJogosBean.jogo.desenvolvedor}"/>
+		    	</div>	
+		    	<div>
+		    		<p:outputLabel value="Preço" for="preco"/>
+		    		<p:inputText id="preco" size="20" maxlength="20" value="#{adminJogosBean.jogo.preco}"/>
+		    	</div>	
+		    	<div>	
+		    		<p:outputLabel value="Data de Publicação" for="dataPublic"/>
+					<p:calendar id="dataPublic" value="#{adminJogosBean.jogo.dataPublicacao}" 
+					converter="calendarConverter" pattern="dd/MM/yyyy"  mask="true"/>
+				</div>	
+				<div>	
+		    		<p:outputLabel value="Plataforma" for="plataforma"/>
+					<h:selectManyListbox id="plataforma" value="#{adminJogosBean.jogo.plataformas}" converter="plataformaConverter">
+					<f:selectItems value="#{adminJogosBean.plataformas}"
+					var="plataforma"
+					itemValue="#{plataforma}" itemLabel="#{plataforma.nome}"/>
+					</h:selectManyListbox>
+				</div>	
+				<div>
+					<h:outputLabel value="Capa do Jogo"/>
+					<h:inputFile value="#{adminJogosBean.capaJogo}" id="capaJogo"/>
+				</div>
+		    	</h:panelGrid>
+		    	<p:toolbarGroup>
+					<p:commandButton value="Cadastrar" id="botaoCadastrar" action="#{adminJogosBean.salvar}"/>
+				</p:toolbarGroup>
+		    	<p:toolbarGroup align="right">
+					<p:button value="Adicionar Plataformas" id="botaoIrPlat" outcome="/jogos/plataformas.xhtml"/>
+				</p:toolbarGroup>
+				</p:panel>		
+		  </h:form>
+		</head>
+	</h:body>	
+</html>

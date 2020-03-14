@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui"> 
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Cadastro Jogo</title>
+	<h:body>
+    	<h:form>    
+	 	<div>
+		 	<p:outputLabel value="Plataforma" for="plataforma"/>
+		 	<p:inputText id="plataforma" size="40" value="#{cadastroPlataformaBean.plataforma.nome}" 
+		 		required="true"/>		
+	 	</div>
+	 	   <p:toolbarGroup>
+				<p:commandButton value="Salvar" id="botaoSalvar" action="#{cadastroPlataformaBean.salvar}"/>
+		   </p:toolbarGroup>
+		    	<p:toolbarGroup align="right">
+				<p:button value="Adcionar Jogo" id="botaoIrJogo" outcome="/jogos/form.xhtml"/>
+			</p:toolbarGroup>
+	   <p:messages/>
+		</h:form>
+	</h:body>
+</h:head>
+</html>
